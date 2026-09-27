@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>André Kreutzer | QA Engineer</title>
+    <style>
+      :root {
+        --bg: #090909;
+        --paper: #f3f2f1;
+        --ink: #1a1a1a;
+        --muted: #4d4d4d;
+        --line: #a8a8a8;
+        --accent: #1d1d1d;
+        --soft: #eceae7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.45;
+      }
+
+      .page-shell {
+        max-width: 1120px;
+        margin: 26px auto;
+        background: var(--paper);
+        min-height: calc(100vh - 52px);
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 22px 60px rgba(0, 0, 0, 0.35);
+      }
+
+      .preview-bar {
+        height: 48px;
+        border-bottom: 1px solid #d2d0ce;
+        background: #efefef;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 14px 0 12px;
+        font-size: 13px;
+      }
+
+      .preview-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .doc-icon {
+        width: 14px;
+        height: 14px;
+        border-radius: 3px;
+        background: linear-gradient(135deg, #3a3a3a 0%, #0f0f0f 100%);
+        position: relative;
+        border: 1px solid rgba(255,255,255,0.4);
+      }
+
+      .doc-icon::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 6px;
+        height: 6px;
+        background: #d8d8d8;
+        border-left: 1px solid rgba(0,0,0,0.08);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+      }
+
+      .filename {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #2a2a2a;
+        font-weight: 500;
+      }
+
+      .preview-right {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #3d3d3d;
+      }
+
+      .mini-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 12px;
+        background: rgba(0,0,0,0.02);
+        border: 1px solid #cfcfcf;
+        border-radius: 999px;
+        font-size: 12px;
+      }
+
+      .mini-btn .eye {
+        font-size: 12px;
+      }
+
+      .resume {
+        padding: 18px 42px 24px;
+      }
+
+      .header {
+        text-align: center;
+        margin-top: 10px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.3rem;
+        letter-spacing: 0.02em;
+        font-weight: 700;
+      }
+
+      .subtitle {
+        margin: 4px 0 8px;
+        font-size: 0.84rem;
+        letter-spacing: 0.01em;
+        font-weight: 600;
+        color: #2a2a2a;
+      }
+
+      .contact {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px 14px;
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin: 0 auto 16px;
+      }
+
+      .contact a {
+        color: #1d1d1d;
+        text-decoration: none;
+      }
+
+      .summary {
+        margin: 0 auto 10px;
+        max-width: 1000px;
+        text-align: left;
+        font-size: 0.8rem;
+      }
+
+      .section {
+        margin-top: 18px;
+        padding-top: 8px;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-title {
+        margin: 0 0 10px;
+        font-size: 0.95rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+        gap: 6px 22px;
+        margin: 0;
+        padding-left: 18px;
+        font-size: 0.82rem;
+      }
+
+      .skills-list li {
+        margin: 0;
+      }
+
+      .experience {
+        margin-top: 10px;
+      }
+
+      .job {
+        margin-bottom: 16px;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 3px;
+      }
+
+      .job-title {
+        font-size: 0.82rem;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .job-meta {
+        font-size: 0.8rem;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .job-subtitle {
+        margin: 2px 0 8px;
+        font-size: 0.8rem;
+        color: var(--muted);
+      }
+
+      .job-bullets {
+        margin: 0;
+        padding-left: 18px;
+        font-size: 0.8rem;
+      }
+
+      .job-bullets li {
+        margin: 0 0 6px;
+      }
+
+      .education {
+        margin-top: 10px;
+      }
+
+      .edu-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        font-size: 0.8rem;
+      }
+
+      .award {
+        font-size: 0.8rem;
+        margin-top: 8px;
+      }
+
+      @media (max-width: 760px) {
+        .resume {
+          padding: 18px 22px 24px;
+        }
+
+        .skills-list {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 1.9rem;
+        }
+
+        .job-header,
+        .edu-row {
+          display: block;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="preview-bar">
+        <div class="preview-left">
+          <span class="doc-icon" aria-hidden="true"></span>
+          <span class="filename">André_Kreutzer_SEDT_Resume.pdf</span>
+        </div>
+        <div class="preview-right">
+          <span aria-hidden="true">◌</span>
+          <span class="mini-btn"><span class="eye">◉</span> Open with Preview</span>
+        </div>
+      </div>
+
+      <main class="resume">
+        <header class="header">
+          <h1>André Kreutzer</h1>
+          <p class="subtitle">Sr. QA Engineer / SET — Playwright • C# • API • Mobile</p>
+          <div class="contact">
+            <span>+55 41 99891-8672</span>
+            <span>|</span>
+            <a href="mailto:andre.kreutzer@outlook.com">andre.kreutzer@outlook.com</a>
+            <span>|</span>
+            <a href="https://www.linkedin.com/in/andrekj" target="_blank" rel="noreferrer">linkedin.com/in/andrekj</a>
+            <span>|</span>
+            <span>Portfolio | Curitiba, Brazil</span>
+          </div>
+        </header>
+
+        <p class="summary">
+          Sr. QA Engineer / SET with 4+ years building and maintaining test automation for fintech and iGaming platforms across web, iOS, and Android.
+          Hands-on with Playwright in C#/.NET, plus Cypress and TypeScript, API testing and mocking with Postman, Charles Proxy, and Mockoon, and
+          native mobile automation with Appium and Espresso. Experienced owning cross-platform regression, framework migrations, and test strategy
+          to enable faster release times and improve product quality.
+        </p>
+
+        <section class="section">
+          <h2 class="section-title">Core Skills</h2>
+          <ul class="skills-list">
+            <li>Web Automation: Playwright (C#/.NET and TypeScript), Cypress (E2E + component) – cypress-axe</li>
+            <li>Mobile Testing: XCUITest (iOS) • Espresso (Android) • cross-platform iOS/Android/Web regression – BrowserStack • Sauce Labs • Android Studio &amp; iOS simulators</li>
+            <li>API Testing: Postman • Charles Proxy (traffic inspection) • Mockoon (API mocking) • REST API validation • backend integration testing</li>
+            <li>Languages &amp; Data: C# • TypeScript • JavaScript • SQL (MySQL, SQL Server)</li>
+            <li>CI/CD &amp; Observability: GitLab CI • Cypress Cloud • Datadog • Grafana</li>
+            <li>Testing Practice: Manual &amp; Functional Testing • Test Planning &amp; Strategy • Exploratory Testing • Process Improvement</li>
+            <li>AI-Driven QA: MCP-based test generation, AI-assisted code review gating, requirements-to-test plan automation</li>
+          </ul>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Professional Experience</h2>
+
+          <div class="experience">
+            <div class="job">
+              <div class="job-header">
+                <p class="job-title">SET (Software Engineer in Test) — Kaizen Gaming</p>
+                <span class="job-meta">Jan 2025 – Present</span>
+              </div>
+              <div class="job-subtitle">Playwright • C# • XCUITest • Espresso • Charles Proxy • Grafana</div>
+              <ul class="job-bullets">
+                <li>Built an automated regression suite for offer-modal translation/localization validation, closing coverage gaps with Transifex-backed correctness checks — replacing manual localization spot-checks with a repeatable automated gate.</li>
+                <li>Designed mocking strategies for real-data-dependent UI components (Player Stats, Momentum Chart), root-caused and resolved recurring Playwright mocking failures, and built the Momentum Web automation suite from scratch.</li>
+                <li>Extended automated coverage across Live/Pre-event Stats and Soccer Lineup player stats, spanning backend integration through Web, Android, and iOS.</li>
+                <li>Owned weekly full-platform (iOS/Android/Web) regression testing for the Sportsbook streaming product for 12+ months.</li>
+                <li>Led technical spikes informing architecture decisions — platform-revamp impact analysis, real-data test-dependency evaluation, and a PoC for a unified streaming endpoint — while sustaining cross-team regression support across 6+ release cycles.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-header">
+                <p class="job-title">Sr. QA Engineer — Questrade</p>
+                <span class="job-meta">Mar 2023 – Sep 2025</span>
+              </div>
+              <div class="job-subtitle">Cypress • Playwright • TypeScript • SQL • Postman • BrowserStack • Agile</div>
+              <ul class="job-bullets">
+                <li>Led QA for a complete site migration (Security → Contentful/Next.js) covering 500+ pages, with full-stack validation (functional and non-functional: accessibility, SEO, EN/FR parity, security/logging, tracing/content compliance); surfaced 10+ production defects, including a critical pre-content tracking/compliance gap, and drove the Gate 2 go/no-go via trace backing of 72 test cases.</li>
+                <li>Ran the migration shift-left, with tests executing locally during development and component-level tests built alongside new components, and drove it end to end with AI assistance — from requirement analysis through to the E2E regression architecture in Cypress.</li>
+                <li>Led two successive framework migrations (Robot Framework → Playwright, then Playwright → Cypress) for the Learning Centre MVP, including CI coverage to Cypress Cloud, and cut regression execution time by 80%.</li>
+                <li>Built the Learning Centre MVP’s architecture from scratch — smoke/sanity/regression suite taxonomy with automated accessibility scanning (Cypress axe), data-driven redirect integrity tests, and multi-environment support.</li>
+                <li>Built AI-driven automation workflow integrating M365 server to generate full E2E and page-level tests in under 1 hour, and a QA automation framework for mobile app testing across Android and iOS using Appium.</li>
+                <li>Automated 200+ functional tests spanning integrated AI-assisted regression with pre-PR code review gating, increasing device coverage while accelerating releases and reducing review churn.</li>
+              </ul>
+            </div>
+
+            <div class="job">
+              <div class="job-header">
+                <p class="job-title">Software QA Analyst — Tuntsocks | AOA Technology</p>
+                <span class="job-meta">Jun 2020 – Jan 2023</span>
+              </div>
+              <div class="job-subtitle">Functional Testing • Jira • Postman • Agile</div>
+              <ul class="job-bullets">
+                <li>Owned test planning and scenario-based edge-case coverage for product releases, improving defect prevention and reliability ahead of launch.</li>
+                <li>Developed and maintained regression suites across multiple web and mobile surfaces, improving release confidence and reducing production issues.</li>
+                <li>Improved process efficiency by introducing test case optimization strategies, retention checks, and automation readiness reviews.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section education">
+          <h2 class="section-title">Education &amp; Certifications</h2>
+          <div class="edu-row">
+            <strong>A.S. Analysis &amp; Systems Development</strong>
+            <span>Descomplica, Curitiba, Brazil (GPA 9.36/10)</span>
+          </div>
+          <div class="edu-row" style="margin-top: 6px;">
+            <span>Coursework: CS50x (Harvard), QA Automation Training Program, Cypress Express, Onebitcode, ZombiePlus, Gravidade Zero</span>
+            <span>Jun 2025</span>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Awards</h2>
+          <div class="award">Act to Impact Award — Questrade, Nov 2023 — for consistently exemplifying QTECH core values</div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
