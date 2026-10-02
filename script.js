@@ -139,8 +139,8 @@
   };
 
   const UI = {
-    en: { menuOpen: "Open menu", menuClose: "Close menu", toLight: "Switch to light theme", toDark: "Switch to dark theme", lang: "Language" },
-    pt: { menuOpen: "Abrir menu", menuClose: "Fechar menu", toLight: "Mudar para tema claro", toDark: "Mudar para tema escuro", lang: "Idioma" }
+    en: { toLight: "Switch to light theme", toDark: "Switch to dark theme", lang: "Language" },
+    pt: { toLight: "Mudar para tema claro", toDark: "Mudar para tema escuro", lang: "Idioma" }
   };
 
   const nodes = Array.from(document.querySelectorAll("[data-i18n]"));
@@ -162,7 +162,6 @@
     });
     document.querySelector(".lang-switch").setAttribute("aria-label", UI[lang].lang);
     syncThemeLabel();
-    syncMenuLabel();
     store("lang", lang);
   }
 
@@ -184,40 +183,30 @@
     syncThemeLabel();
   });
 
-  /* ---------- Mobile menu ---------- */
-  const menuBtn = document.querySelector(".menu-btn");
-  const navLinks = document.getElementById("nav-links");
-
-  function syncMenuLabel() {
-    const open = navLinks.classList.contains("open");
-    menuBtn.setAttribute("aria-expanded", String(open));
-    menuBtn.setAttribute("aria-label", open ? UI[lang].menuClose : UI[lang].menuOpen);
-  }
-
-  function closeMenu() {
-    navLinks.classList.remove("open");
-    syncMenuLabel();
-  }
-
-  menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
-    syncMenuLabel();
-  });
-  navLinks.addEventListener("click", (e) => { if (e.target.closest("a")) closeMenu(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeMenu(); });
-
   /* ---------- Active section in nav ---------- */
+  const navLinks = document.getElementById("nav-links");
   const links = Array.from(navLinks.querySelectorAll("a"));
   const sections = links
     .map((a) => document.querySelector(a.getAttribute("href")))
     .filter(Boolean);
 
+  let activeId;
+
   function markActive(id) {
+    if (id === activeId) return;
+    activeId = id;
     links.forEach((a) => {
       const on = a.getAttribute("href") === "#" + id;
       a.classList.toggle("active", on);
-      if (on) a.setAttribute("aria-current", "true");
-      else a.removeAttribute("aria-current");
+      if (on) {
+        a.setAttribute("aria-current", "true");
+        // On mobile the links row scrolls sideways; keep the active one visible.
+        if (navLinks.scrollWidth > navLinks.clientWidth) {
+          navLinks.scrollTo({ left: a.parentElement.offsetLeft - 16, behavior: "smooth" });
+        }
+      } else {
+        a.removeAttribute("aria-current");
+      }
     });
   }
 
