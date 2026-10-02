@@ -1,296 +1,385 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="André Kreutzer — Senior QA Engineer and Software Engineer in Test. Specializing in quality strategy, test automation, and reliable software delivery."
-    />
-    <title>André Kreutzer | QA Engineer & SET</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <a class="brand" href="#top" aria-label="Go to top">André Kreutzer<span>.</span></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>André Kreutzer — Sr. QA Engineer / SDET</title>
+  <meta name="description" content="André Kreutzer — Sr. QA Engineer / SDET. Test automation with Playwright (C# and TypeScript), Cypress, API testing and native mobile (XCUITest, Espresso) for fintech and iGaming. Interested in AI testing and AI engineering." />
+  <meta name="author" content="André Kreutzer" />
+  <link rel="canonical" href="https://andrelkj.github.io/" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
 
-        <nav class="primary-nav" aria-label="Main navigation">
-          <a href="#top" class="nav-link active" data-en="Home" data-pt-br="Início">Home</a>
-          <a href="#about" class="nav-link" data-en="About" data-pt-br="Sobre">About</a>
-          <a href="#experience" class="nav-link" data-en="Experience" data-pt-br="Experiência">Experience</a>
-          <a href="#projects" class="nav-link" data-en="Projects" data-pt-br="Projetos">Projects</a>
-          <a href="#skills" class="nav-link" data-en="Stack" data-pt-br="Stack">Stack</a>
-          <a href="#contact" class="nav-link" data-en="Contact" data-pt-br="Contato">Contact</a>
-        </nav>
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="André Kreutzer — Sr. QA Engineer / SDET" />
+  <meta property="og:description" content="Playwright · C# · API · Mobile · AI-assisted QA. 4+ years of test automation for fintech and iGaming across web, iOS and Android." />
+  <meta property="og:url" content="https://andrelkj.github.io/" />
+  <meta name="twitter:card" content="summary" />
 
-        <div class="header-tools">
-          <div class="language-switcher" aria-label="Language switcher" role="group">
-            <button class="lang-btn active" data-lang="en" type="button" aria-label="English">EN</button>
-            <button class="lang-btn" data-lang="pt-br" type="button" aria-label="Português">PT</button>
-          </div>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "André Kreutzer",
+    "jobTitle": "Sr. QA Engineer / Software Engineer in Test",
+    "email": "mailto:andre.kreutzer@outlook.com",
+    "url": "https://andrelkj.github.io/",
+    "address": { "@type": "PostalAddress", "addressLocality": "Curitiba", "addressCountry": "BR" },
+    "sameAs": ["https://www.linkedin.com/in/andrekj", "https://github.com/andrelkj"],
+    "knowsAbout": ["Test Automation", "Playwright", "C#", "Cypress", "TypeScript", "API Testing", "XCUITest", "Espresso", "AI-assisted QA"]
+  }
+  </script>
 
-          <button class="theme-btn" type="button" aria-label="Toggle dark/light mode">
-            <span class="theme-icon" aria-hidden="true">☀️</span>
-          </button>
+  <script>
+    // Apply saved theme before paint to avoid a flash.
+    try {
+      var t = localStorage.getItem("theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+
+  <header class="topbar">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="#top"><span class="prompt">&gt;_</span> andre<span class="muted">.kreutzer</span></a>
+
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#work" data-i18n="nav.work">Work</a></li>
+        <li><a href="#stack" data-i18n="nav.stack">Stack</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-tools">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="pt" aria-pressed="false">PT</button>
         </div>
-      </header>
+        <button class="icon-btn theme-btn" type="button" aria-label="Switch to light theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
 
-      <main>
-        <section class="hero" id="top">
-          <div class="hero-copy">
-            <p class="eyebrow" data-en="// Quality Engineering / Test Automation" data-pt-br="// Engenharia de Qualidade / Automação de Testes">
-              // Quality Engineering / Test Automation
-            </p>
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero container" id="top">
+      <div class="hero-text">
+        <p class="status"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.status">Open to Sr QA / SDET roles · Remote · Curitiba, BR (UTC−3)</span></p>
+        <h1>André Kreutzer<span class="caret" aria-hidden="true">_</span></h1>
+        <p class="role" data-i18n="hero.role">Sr. QA Engineer / Software Engineer in Test</p>
+        <p class="tagline mono">Playwright · C# · API · Mobile · AI-assisted QA</p>
+        <p class="lede" data-i18n="hero.lede">I build test automation that teams can trust, across web, iOS and Android, for fintech and iGaming products.</p>
+        <p class="interest mono"><span class="accent" data-i18n="hero.interestLabel">interested_in:</span> <span data-i18n="hero.interest">AI testing · AI engineering</span></p>
 
-            <h1 data-en="Senior QA engineer. Building reliable software at scale." data-pt-br="Engenheiro QA sênior. Construindo software confiável em escala.">
-              Senior QA engineer. Building reliable software at scale.
-            </h1>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact" data-i18n="cta.contact">Get in touch</a>
+          <a class="btn" href="assets/Andre_Kreutzer_SDET_Resume.pdf" download>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-i18n="cta.resume">Download resume</span>
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/andrekj" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-ghost" href="https://github.com/andrelkj" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
 
-            <p class="lead" data-en="8+ years delivering quality strategy, test automation, and reliability improvements across fintech and SaaS products. I focus on making quality a competitive advantage." data-pt-br="8+ anos entregando estratégia de qualidade, automação de testes e melhorias de confiabilidade em produtos fintech e SaaS. Meu foco é tornar a qualidade uma vantagem competitiva.">
-              8+ years delivering quality strategy, test automation, and reliability improvements across fintech and SaaS products. I focus on making quality a competitive advantage.
-            </p>
+      <figure class="terminal" aria-label="Career summary formatted as a passing test run">
+        <div class="term-bar" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <p class="mono">andre@qa: ~/career</p>
+        </div>
+        <div class="term-body mono">
+          <p class="run-line" style="--i:0"><span class="accent">$</span> npx playwright test --reporter=list</p>
+          <p class="run-line dim" style="--i:1" data-i18n="run.header">Running 5 tests using 1 worker</p>
+          <p class="run-line" style="--i:2"><span class="pass">✓</span> <span class="dim">experience ›</span> <span data-i18n="run.t1">4+ years · fintech &amp; iGaming</span></p>
+          <p class="run-line" style="--i:3"><span class="pass">✓</span> <span class="dim">platforms ›</span> web · iOS · Android</p>
+          <p class="run-line" style="--i:4"><span class="pass">✓</span> <span class="dim">migrations ›</span> <span data-i18n="run.t3">regression run time cut by 80%+</span></p>
+          <p class="run-line" style="--i:5"><span class="pass">✓</span> <span class="dim">ai ›</span> <span data-i18n="run.t4">test planning: 3–4 days → ~2 hours</span></p>
+          <p class="run-line" style="--i:6"><span class="pass">✓</span> <span class="dim">scale ›</span> <span data-i18n="run.t5">500+ page site migration validated</span></p>
+          <p class="run-line summary" style="--i:7"><span class="pass" data-i18n="run.summary">5 passed</span></p>
+          <p class="run-line" style="--i:8"><span class="accent">$</span> <span class="cursor" aria-hidden="true"></span></p>
+        </div>
+      </figure>
+    </section>
 
-            <div class="cta-row">
-              <a class="button primary" href="#contact" data-en="Get in touch" data-pt-br="Entre em contato">Get in touch</a>
-              <a class="button secondary" href="#experience" data-en="View my work" data-pt-br="Ver meu trabalho">View my work</a>
+    <!-- ABOUT -->
+    <section class="section container" id="about" aria-labelledby="about-title">
+      <p class="eyebrow mono">// about</p>
+      <h2 id="about-title" data-i18n="about.title">Quality that ships with the code.</h2>
+      <div class="about-grid">
+        <div class="prose">
+          <p data-i18n="about.p1">I'm a Sr. QA Engineer and Software Engineer in Test with <strong>4+ years</strong> of building and maintaining test automation for fintech and iGaming platforms. I write tests in <strong>Playwright (C#/.NET and TypeScript)</strong> and <strong>Cypress</strong>, test and mock APIs with Postman, Charles Proxy and Mockoon, and automate native mobile apps with <strong>XCUITest</strong> and <strong>Espresso</strong>.</p>
+          <p data-i18n="about.p2">I like owning quality end to end in remote teams: test strategy, cross-platform regression and framework migrations. More and more of my work is <strong>AI-assisted QA</strong>, such as generating test suites through MCP servers, turning requirements into test plans and gating code review with AI. This is the area I want to grow in: <strong>testing AI-powered products and building AI tooling</strong> for engineering teams.</p>
+        </div>
+        <ul class="focus-grid">
+          <li class="card">
+            <p class="mono accent">01</p>
+            <h3 data-i18n="about.c1.t">Web automation</h3>
+            <p data-i18n="about.c1.d">Playwright (C# and TypeScript, POM), Cypress E2E and component tests, accessibility checks with cypress-axe.</p>
+          </li>
+          <li class="card">
+            <p class="mono accent">02</p>
+            <h3 data-i18n="about.c2.t">Native mobile</h3>
+            <p data-i18n="about.c2.d">XCUITest and Espresso, BrowserStack and Sauce Labs, cross-platform regression on iOS, Android and web.</p>
+          </li>
+          <li class="card">
+            <p class="mono accent">03</p>
+            <h3 data-i18n="about.c3.t">APIs &amp; mocking</h3>
+            <p data-i18n="about.c3.d">REST validation and backend integration tests, traffic inspection with Charles Proxy, API mocks with Mockoon.</p>
+          </li>
+          <li class="card">
+            <p class="mono accent">04</p>
+            <h3 data-i18n="about.c4.t">AI-driven QA</h3>
+            <p data-i18n="about.c4.d">MCP-based test generation, requirements-to-test-plan automation and AI-assisted code review gates.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="section container" id="experience" aria-labelledby="exp-title">
+      <p class="eyebrow mono">// git log --author=andre</p>
+      <h2 id="exp-title" data-i18n="exp.title">Experience</h2>
+
+      <ol class="timeline">
+        <li class="commit">
+          <div class="commit-meta mono">
+            <span class="hash">a3f9c1e</span>
+            <span class="ref" data-i18n="exp.head">HEAD → current</span>
+          </div>
+          <div class="commit-body">
+            <div class="commit-head">
+              <h3><span data-i18n="exp.k.role">Software Engineer in Test</span> <span class="at">@ Kaizen Gaming</span></h3>
+              <p class="when mono"><span data-i18n="exp.k.date">Jan 2025 – Present</span> · <span data-i18n="exp.k.loc">Athens, Greece (Remote)</span></p>
             </div>
-
-            <ul class="mini-trust" aria-label="Key strengths">
-              <li data-en="Test Strategy & Planning" data-pt-br="Estratégia de Testes">Test Strategy & Planning</li>
-              <li data-en="Test Automation" data-pt-br="Automação de Testes">Test Automation</li>
-              <li data-en="Quality Engineering" data-pt-br="Engenharia de Qualidade">Quality Engineering</li>
+            <ul class="bullets">
+              <li data-i18n="exp.k.b1">Started a <strong>QA Revamp</strong> initiative to refactor and clean up the automated test suite and track its results, so the team can trust what the tests report.</li>
+              <li data-i18n="exp.k.b2">Built web automation suites from scratch and designed <strong>mocking strategies for live-data UI</strong> (player stats, live charts), fixing recurring Playwright mocking failures. Extended coverage from backend integration through Web, Android and iOS.</li>
+              <li data-i18n="exp.k.b3">Replaced manual translation spot-checks with an <strong>automated localization regression suite</strong>.</li>
+              <li data-i18n="exp.k.b4">Owned weekly full regression across <strong>iOS, Android and Web</strong> for the live-streaming sportsbook product for <strong>12+ months</strong>, and ran technical spikes that informed architecture decisions.</li>
+            </ul>
+            <ul class="chips" aria-label="Tech">
+              <li>Playwright</li><li>C#</li><li>XCUITest</li><li>Espresso</li><li>Charles Proxy</li><li>Grafana</li>
             </ul>
           </div>
+        </li>
 
-          <aside class="hero-panel" aria-label="Profile summary">
-            <div class="status-pill">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span data-en="Open to opportunities" data-pt-br="Aberto a oportunidades">Open to opportunities</span>
+        <li class="commit">
+          <div class="commit-meta mono"><span class="hash">7b2e4d0</span></div>
+          <div class="commit-body">
+            <div class="commit-head">
+              <h3><span data-i18n="exp.q.role">Sr. QA Engineer</span> <span class="at">@ Questrade</span></h3>
+              <p class="when mono"><span data-i18n="exp.q.date">Mar 2023 – Sep 2026</span> · <span data-i18n="exp.q.loc">Toronto, Canada (Remote)</span></p>
             </div>
+            <ul class="bullets">
+              <li data-i18n="exp.q.b1">Led QA for a full <strong>website platform migration of 500+ pages</strong>, covering functionality, accessibility, SEO, English/French parity and consent compliance. Caught <strong>10+ production defects</strong>, including a critical privacy gap, and owned the go/no-go call for launch.</li>
+              <li data-i18n="exp.q.b2">Led two test framework migrations (Robot Framework → Playwright → Cypress) and moved CI to Cypress Cloud, cutting regression run time by <strong>80%+</strong>.</li>
+              <li data-i18n="exp.q.b3">Designed the QA architecture for a new product from scratch: smoke, sanity and regression suites, automated accessibility scans, data-driven redirect tests and support for multiple environments.</li>
+              <li data-i18n="exp.q.b4">Built AI workflows with MCP servers that generate full E2E suites <strong>in under 1 hour</strong>, plus a QA companion tool that cut test planning from <strong>3–4 days to ~2 hours</strong>.</li>
+              <li data-i18n="exp.q.b5">Automated <strong>200+ functional tests</strong> and added AI-assisted code review before PRs, which reduced review back-and-forth.</li>
+            </ul>
+            <ul class="chips" aria-label="Tech">
+              <li>Cypress</li><li>Playwright</li><li>TypeScript</li><li>SQL</li><li>Postman</li><li>BrowserStack</li>
+            </ul>
+          </div>
+        </li>
 
-            <div class="profile-card">
-              <div class="profile-badge">SET</div>
-              <h2>André Kreutzer</h2>
-              <p data-en="Senior QA Engineer" data-pt-br="Engenheiro QA Sênior">
-                Senior QA Engineer
-              </p>
-              <p class="subtitle" data-en="Software Engineer in Test" data-pt-br="Engenheiro de Software em Testes">
-                Software Engineer in Test
-              </p>
+        <li class="commit">
+          <div class="commit-meta mono"><span class="hash">1c08e5b</span></div>
+          <div class="commit-body">
+            <div class="commit-head">
+              <h3><span data-i18n="exp.t.role">Software QA Analyst</span> <span class="at">@ Tunts.Rocks | AOA Technology</span></h3>
+              <p class="when mono"><span data-i18n="exp.t.date">Jun 2020 – Jan 2023</span> · Curitiba, Brazil</p>
             </div>
-
-            <div class="metrics">
-              <div>
-                <strong>8+</strong>
-                <span data-en="years in QA" data-pt-br="anos em QA">years in QA</span>
-              </div>
-              <div>
-                <strong>20+</strong>
-                <span data-en="projects shipped" data-pt-br="projetos entregues">projects shipped</span>
-              </div>
-              <div>
-                <strong>99.8%</strong>
-                <span data-en="uptime owned" data-pt-br="uptime gerenciado">uptime owned</span>
-              </div>
-            </div>
-          </aside>
-        </section>
-
-        <section class="content-section" id="about">
-          <div class="section-heading">
-            <p class="section-kicker" data-en="// About Me" data-pt-br="// Sobre Mim">// About Me</p>
-            <h2 data-en="Shipping quality at speed." data-pt-br="Entregando qualidade rapidamente.">Shipping quality at speed.</h2>
+            <ul class="bullets">
+              <li data-i18n="exp.t.b1">Owned test planning and edge-case coverage for product releases to catch defects before launch.</li>
+              <li data-i18n="exp.t.b2">Improved functional testing workflows, which kept multiple platforms stable across release cycles.</li>
+            </ul>
+            <ul class="chips" aria-label="Tech">
+              <li data-i18n="exp.t.chip">Functional testing</li><li>Jira</li><li>Postman</li><li>Agile</li>
+            </ul>
           </div>
+        </li>
+      </ol>
+    </section>
 
-          <div class="about-grid">
-            <div class="about-copy">
-              <p data-en="I'm a QA engineer focused on shifting quality left and making testing a core part of the development process. My work spans test strategy, automation architecture, and building quality cultures." data-pt-br="Sou um engenheiro de QA focado em antecipar qualidade e tornar testes uma parte central do processo de desenvolvimento. Meu trabalho abrange estratégia de testes, arquitetura de automação e construção de culturas de qualidade.">
-                I'm a QA engineer focused on shifting quality left and making testing a core part of the development process. My work spans test strategy, automation architecture, and building quality cultures.
-              </p>
-              <p data-en="I work best with engineering teams that value reliability, ship frequently, and believe that quality is everyone's responsibility. My goal is to make quality decisions data-driven and confidence-backed." data-pt-br="Trabalho melhor com equipes de engenharia que valorizam confiabilidade, entregam frequentemente e acreditam que qualidade é responsabilidade de todos. Meu objetivo é tornar decisões de qualidade baseadas em dados e respaldadas por confiança.">
-                I work best with engineering teams that value reliability, ship frequently, and believe that quality is everyone's responsibility. My goal is to make quality decisions data-driven and confidence-backed.
-              </p>
-            </div>
+    <!-- WORK -->
+    <section class="section container" id="work" aria-labelledby="work-title">
+      <p class="eyebrow mono">// selected work</p>
+      <h2 id="work-title" data-i18n="work.title">Selected work</h2>
 
-            <div class="facts-grid">
-              <article class="fact-card">
-                <strong data-en="Strategy" data-pt-br="Estratégia">Strategy</strong>
-                <span data-en="Risk-based testing & planning" data-pt-br="Testes baseados em risco">Risk-based testing & planning</span>
-              </article>
-              <article class="fact-card">
-                <strong data-en="Automation" data-pt-br="Automação">Automation</strong>
-                <span data-en="Playwright, Cypress, Selenium" data-pt-br="Playwright, Cypress, Selenium">Playwright, Cypress, Selenium</span>
-              </article>
-              <article class="fact-card">
-                <strong data-en="Leadership" data-pt-br="Liderança">Leadership</strong>
-                <span data-en="Building quality teams & culture" data-pt-br="Construindo equipes de qualidade">Building quality teams & culture</span>
-              </article>
-              <article class="fact-card">
-                <strong data-en="Reliability" data-pt-br="Confiabilidade">Reliability</strong>
-                <span data-en="CI/CD, monitoring, SRE practices" data-pt-br="CI/CD, monitoramento, práticas SRE">CI/CD, monitoring, SRE practices</span>
-              </article>
-            </div>
-          </div>
-        </section>
+      <div class="work-grid">
+        <article class="card case">
+          <header>
+            <p class="metric mono" data-i18n="work.w1.m">500+ pages</p>
+            <h3 data-i18n="work.w1.t">Website platform migration</h3>
+            <p class="org mono">Questrade · fintech</p>
+          </header>
+          <dl>
+            <dt class="mono" data-i18n="lbl.context">context</dt>
+            <dd data-i18n="work.w1.c">A public website of more than 500 pages moving to a new CMS and front-end stack (Contentful + Next.js), with bilingual, accessibility and privacy requirements.</dd>
+            <dt class="mono" data-i18n="lbl.approach">approach</dt>
+            <dd data-i18n="work.w1.a">Shift-left: tests ran locally during development, component tests were written alongside new components, and the Cypress E2E regression was designed with AI help, starting from the requirements.</dd>
+            <dt class="mono" data-i18n="lbl.result">result</dt>
+            <dd data-i18n="work.w1.r"><strong>10+ production defects</strong> caught before launch, including a critical issue where tracking fired before user consent. I owned QA sign-off for go-live.</dd>
+          </dl>
+        </article>
 
-        <section class="content-section" id="experience">
-          <div class="section-heading">
-            <p class="section-kicker" data-en="// Career" data-pt-br="// Carreira">// Career</p>
-            <h2 data-en="Experience shipping quality software." data-pt-br="Experiência entregando software de qualidade.">Experience shipping quality software.</h2>
-          </div>
+        <article class="card case">
+          <header>
+            <p class="metric mono" data-i18n="work.w2.m">−80% regression time</p>
+            <h3 data-i18n="work.w2.t">Two framework migrations</h3>
+            <p class="org mono">Questrade · fintech</p>
+          </header>
+          <dl>
+            <dt class="mono" data-i18n="lbl.context">context</dt>
+            <dd data-i18n="work.w2.c">An automation suite built on Robot Framework that needed to move to a modern stack the team could maintain.</dd>
+            <dt class="mono" data-i18n="lbl.approach">approach</dt>
+            <dd data-i18n="work.w2.a">Migrated Robot Framework → Playwright, then Playwright → Cypress, including the CI cutover to Cypress Cloud.</dd>
+            <dt class="mono" data-i18n="lbl.result">result</dt>
+            <dd data-i18n="work.w2.r">Regression run time cut by <strong>more than 80%</strong>.</dd>
+          </dl>
+        </article>
 
-          <div class="timeline">
-            <article class="timeline-item current">
-              <div class="timeline-dot" aria-hidden="true"></div>
-              <div class="timeline-content">
-                <div class="timeline-meta">
-                  <h3 data-en="Software Engineer in Test" data-pt-br="Engenheiro de Software em Testes">Software Engineer in Test</h3>
-                  <span data-en="2024 — Present" data-pt-br="2024 — Presente">2024 — Present</span>
-                </div>
-                <p class="company">Questrade</p>
-                <p data-en="Leading end-to-end quality strategy, designing automation frameworks for financial products, and building cross-team quality ownership. Reduced critical bugs by 40% through risk-based testing." data-pt-br="Liderando estratégia de qualidade, projetando frameworks de automação para produtos financeiros e construindo propriedade de qualidade em equipes. Reduzi bugs críticos em 40% através de testes baseados em risco.">
-                  Leading end-to-end quality strategy, designing automation frameworks for financial products, and building cross-team quality ownership. Reduced critical bugs by 40% through risk-based testing.
-                </p>
-              </div>
-            </article>
+        <article class="card case">
+          <header>
+            <p class="metric mono" data-i18n="work.w3.m">3–4 days → ~2 h</p>
+            <h3 data-i18n="work.w3.t">AI-driven QA workflows</h3>
+            <p class="org mono">Questrade · fintech</p>
+          </header>
+          <dl>
+            <dt class="mono" data-i18n="lbl.context">context</dt>
+            <dd data-i18n="work.w3.c">Test planning took 3–4 days, and E2E suites were written entirely by hand.</dd>
+            <dt class="mono" data-i18n="lbl.approach">approach</dt>
+            <dd data-i18n="work.w3.a">Connected MCP servers to the automation workflow to generate full E2E and page-level suites, built a QA companion tool that turns requirements into test plans, and added AI-assisted code review before PRs.</dd>
+            <dt class="mono" data-i18n="lbl.result">result</dt>
+            <dd data-i18n="work.w3.r">Full suites generated <strong>in under 1 hour</strong>, test planning down to <strong>~2 hours</strong>, and less review churn.</dd>
+          </dl>
+        </article>
 
-            <article class="timeline-item">
-              <div class="timeline-dot" aria-hidden="true"></div>
-              <div class="timeline-content">
-                <div class="timeline-meta">
-                  <h3 data-en="Senior QA Engineer" data-pt-br="Engenheiro QA Sênior">Senior QA Engineer</h3>
-                  <span data-en="2021 — 2024" data-pt-br="2021 — 2024">2021 — 2024</span>
-                </div>
-                <p class="company">Questrade</p>
-                <p data-en="Built scalable test automation suite, established quality metrics, and mentored junior QA engineers. Improved deployment confidence from 85% to 98% through structured testing practices." data-pt-br="Construí suíte de automação de testes escalável, estabeleci métricas de qualidade e mentori engenheiros QA juniores. Melhorei confiança de deployment de 85% para 98% através de práticas de testes estruturadas.">
-                  Built scalable test automation suite, established quality metrics, and mentored junior QA engineers. Improved deployment confidence from 85% to 98% through structured testing practices.
-                </p>
-              </div>
-            </article>
+        <article class="card case">
+          <header>
+            <p class="metric mono">Web · iOS · Android</p>
+            <h3 data-i18n="work.w4.t">Sportsbook &amp; live streaming</h3>
+            <p class="org mono">Kaizen Gaming · iGaming</p>
+          </header>
+          <dl>
+            <dt class="mono" data-i18n="lbl.context">context</dt>
+            <dd data-i18n="work.w4.c">A sports-betting platform with live data and video streaming on Web, iOS and Android, where tests depend on real-time data.</dd>
+            <dt class="mono" data-i18n="lbl.approach">approach</dt>
+            <dd data-i18n="work.w4.a">Mocking strategies for live-data UI, automation suites built from scratch, automated localization checks, and an ongoing <strong>QA Revamp</strong> I started to refactor the suite and track results so failures can be trusted.</dd>
+            <dt class="mono" data-i18n="lbl.result">result</dt>
+            <dd data-i18n="work.w4.r"><strong>12+ months</strong> owning weekly full-platform regression, plus technical spikes that informed architecture decisions, including a proof of concept for a unified streaming endpoint.</dd>
+          </dl>
+        </article>
+      </div>
 
-            <article class="timeline-item">
-              <div class="timeline-dot" aria-hidden="true"></div>
-              <div class="timeline-content">
-                <div class="timeline-meta">
-                  <h3 data-en="QA Analyst" data-pt-br="Analista de QA">QA Analyst</h3>
-                  <span data-en="2018 — 2021" data-pt-br="2018 — 2021">2018 — 2021</span>
-                </div>
-                <p class="company">Tuntsrocks / AOA Technology</p>
-                <p data-en="Developed test plans, executed comprehensive test cycles, and contributed to quality process improvements. Supported product releases across web and mobile platforms." data-pt-br="Desenvolvi planos de testes, executei ciclos de testes abrangentes e contribui para melhorias no processo de qualidade. Apoiei lançamentos de produtos em plataformas web e mobile.">
-                  Developed test plans, executed comprehensive test cycles, and contributed to quality process improvements. Supported product releases across web and mobile platforms.
-                </p>
-              </div>
-            </article>
-          </div>
-        </section>
+      <div class="training">
+        <p class="mono dim" data-i18n="work.training">$ ls ~/course-projects</p>
+        <ul class="training-list">
+          <li><a href="https://github.com/andrelkj/Universo-Cypress" target="_blank" rel="noopener"><span class="mono">Universo-Cypress</span><span class="dim">Cypress · PostgreSQL · REST · CI</span></a></li>
+          <li><a href="https://github.com/andrelkj/ZombiePlus" target="_blank" rel="noopener"><span class="mono">ZombiePlus</span><span class="dim">Playwright · PostgreSQL · Docker · CI</span></a></li>
+          <li><a href="https://github.com/andrelkj/GravidadeZero" target="_blank" rel="noopener"><span class="mono">GravidadeZero</span><span class="dim">Robot Framework · REST · CI</span></a></li>
+        </ul>
+      </div>
+    </section>
 
-        <section class="content-section" id="projects">
-          <div class="section-heading">
-            <p class="section-kicker" data-en="// Projects" data-pt-br="// Projetos">// Projects</p>
-            <h2 data-en="Selected highlights." data-pt-br="Destaques selecionados.">Selected highlights.</h2>
-          </div>
+    <!-- STACK -->
+    <section class="section container" id="stack" aria-labelledby="stack-title">
+      <p class="eyebrow mono">// cat stack.json</p>
+      <h2 id="stack-title" data-i18n="stack.title">Tools I work with</h2>
+      <div class="stack-grid">
+        <div class="stack-group">
+          <h3 class="mono" data-i18n="stack.web">web</h3>
+          <ul class="chips"><li>Playwright (C#/.NET · TS)</li><li>Cypress</li><li>cypress-axe</li><li>Page Object Model</li></ul>
+        </div>
+        <div class="stack-group">
+          <h3 class="mono" data-i18n="stack.mobile">mobile</h3>
+          <ul class="chips"><li>XCUITest</li><li>Espresso</li><li>BrowserStack</li><li>Sauce Labs</li><li>Android Studio</li><li data-i18n="stack.sim">iOS simulators</li></ul>
+        </div>
+        <div class="stack-group">
+          <h3 class="mono" data-i18n="stack.api">api</h3>
+          <ul class="chips"><li>Postman</li><li>Charles Proxy</li><li>Mockoon</li><li data-i18n="stack.rest">REST validation</li><li data-i18n="stack.integration">Backend integration</li></ul>
+        </div>
+        <div class="stack-group">
+          <h3 class="mono" data-i18n="stack.lang">languages &amp; data</h3>
+          <ul class="chips"><li>C#</li><li>TypeScript</li><li>JavaScript</li><li>SQL (MySQL · SQL Server)</li></ul>
+        </div>
+        <div class="stack-group">
+          <h3 class="mono" data-i18n="stack.ci">ci/cd &amp; observability</h3>
+          <ul class="chips"><li>GitLab CI</li><li>Cypress Cloud</li><li>Datadog</li><li>Grafana</li></ul>
+        </div>
+        <div class="stack-group">
+          <h3 class="mono" data-i18n="stack.ai">ai-driven qa</h3>
+          <ul class="chips"><li data-i18n="stack.ai1">MCP test generation</li><li data-i18n="stack.ai2">AI code review gates</li><li data-i18n="stack.ai3">Requirements → test plans</li></ul>
+        </div>
+        <div class="stack-group wide">
+          <h3 class="mono" data-i18n="stack.practice">practice</h3>
+          <ul class="chips"><li data-i18n="stack.p1">Test strategy &amp; planning</li><li data-i18n="stack.p2">Exploratory testing</li><li data-i18n="stack.p3">Cross-platform regression</li><li data-i18n="stack.p4">Accessibility testing</li><li data-i18n="stack.p5">Process improvement</li></ul>
+        </div>
+      </div>
+    </section>
 
-          <div class="project-grid">
-            <article class="project-card">
-              <span class="project-tag" data-en="Quality Strategy" data-pt-br="Estratégia de Qualidade">Quality Strategy</span>
-              <h3 data-en="Release confidence framework" data-pt-br="Framework de confiança de release">Release confidence framework</h3>
-              <p data-en="Designed risk-based testing strategy and metrics dashboard that enabled confident deployments. Reduced post-release issues by 35% and deployment cycle time by 20%." data-pt-br="Projetei estratégia de testes baseada em risco e dashboard de métricas que permitiram deployments confiantes. Reduzi problemas pós-lançamento em 35% e tempo de ciclo de deployment em 20%.">
-                Designed risk-based testing strategy and metrics dashboard that enabled confident deployments. Reduced post-release issues by 35% and deployment cycle time by 20%.
-              </p>
-            </article>
+    <!-- EDUCATION -->
+    <section class="section container" id="education" aria-labelledby="edu-title">
+      <p class="eyebrow mono">// background</p>
+      <h2 id="edu-title" data-i18n="edu.title">Education &amp; recognition</h2>
+      <div class="edu-grid">
+        <div class="card">
+          <p class="mono accent" data-i18n="edu.k1">degree</p>
+          <h3 data-i18n="edu.degree">A.S., Analysis and Systems Development</h3>
+          <p class="dim" data-i18n="edu.degreeMeta">Descomplica · 2025 · GPA 9.36/10</p>
+          <p class="small" data-i18n="edu.courses">Also: CS50x (Harvard), QA Automation Training Program, Cypress eXpress, OneBitCode.</p>
+        </div>
+        <div class="card">
+          <p class="mono accent" data-i18n="edu.k2">award</p>
+          <h3>Act to Impact Award</h3>
+          <p class="dim">Questrade · Nov 2023</p>
+          <p class="small" data-i18n="edu.award">For showing initiative and leadership in building and maintaining automated tests on one of the project's main flows.</p>
+        </div>
+        <div class="card">
+          <p class="mono accent" data-i18n="edu.k3">languages</p>
+          <ul class="lang-list">
+            <li><span data-i18n="edu.pt">Portuguese</span><span class="dim" data-i18n="edu.native">native</span></li>
+            <li><span data-i18n="edu.en">English</span><span class="dim" data-i18n="edu.full">full professional</span></li>
+            <li><span data-i18n="edu.es">Spanish</span><span class="dim" data-i18n="edu.basic">elementary</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-            <article class="project-card">
-              <span class="project-tag" data-en="Test Automation" data-pt-br="Automação de Testes">Test Automation</span>
-              <h3 data-en="Multi-layer automation suite" data-pt-br="Suíte de automação em camadas">Multi-layer automation suite</h3>
-              <p data-en="Built comprehensive test automation across API, UI, and integration layers using Playwright and TypeScript. Achieved 85% automation coverage and 40% reduction in manual testing hours." data-pt-br="Construí automação de testes abrangente nas camadas API, UI e integração usando Playwright e TypeScript. Alcancei 85% de cobertura de automação e 40% de redução em horas de testes manuais.">
-                Built comprehensive test automation across API, UI, and integration layers using Playwright and TypeScript. Achieved 85% automation coverage and 40% reduction in manual testing hours.
-              </p>
-            </article>
+    <!-- CONTACT -->
+    <section class="section container contact" id="contact" aria-labelledby="contact-title">
+      <p class="eyebrow mono">// ./contact --now</p>
+      <h2 id="contact-title" data-i18n="contact.title">Let's talk about quality.</h2>
+      <p class="lede" data-i18n="contact.text">Hiring a Sr. QA Engineer or SDET to own automation across web, mobile and APIs, or someone keen to test AI-powered products? I'd like to hear from you.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="mailto:andre.kreutzer@outlook.com">andre.kreutzer@outlook.com</a>
+        <a class="btn" href="assets/Andre_Kreutzer_SDET_Resume.pdf" download><span data-i18n="cta.resume">Download resume</span></a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/andrekj" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/andrelkj" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </section>
+  </main>
 
-            <article class="project-card">
-              <span class="project-tag" data-en="Leadership" data-pt-br="Liderança">Leadership</span>
-              <h3 data-en="Quality center of excellence" data-pt-br="Centro de excelência em qualidade">Quality center of excellence</h3>
-              <p data-en="Established QA best practices, mentored team members, and championed quality culture across engineering. Built reusable frameworks and documentation that scaled quality processes." data-pt-br="Estabeleci melhores práticas de QA, mentori membros da equipe e promovi cultura de qualidade em toda engenharia. Construí frameworks reutilizáveis e documentação que escalonaram processos de qualidade.">
-                Established QA best practices, mentored team members, and championed quality culture across engineering. Built reusable frameworks and documentation that scaled quality processes.
-              </p>
-            </article>
-          </div>
-        </section>
+  <footer class="footer container mono">
+    <p><span class="accent">$</span> exit 0</p>
+    <p class="dim">© <span id="year">2026</span> André Kreutzer</p>
+  </footer>
 
-        <section class="content-section" id="skills">
-          <div class="section-heading">
-            <p class="section-kicker" data-en="// Tech Stack" data-pt-br="// Stack de Tecnologia">// Tech Stack</p>
-            <h2 data-en="Tools & platforms I work with." data-pt-br="Ferramentas e plataformas que uso.">Tools & platforms I work with.</h2>
-          </div>
-
-          <div class="skills-container">
-            <div class="skill-category">
-              <h3 data-en="Automation" data-pt-br="Automação">Automation</h3>
-              <div class="skills-grid">
-                <span class="skill-pill">Playwright</span>
-                <span class="skill-pill">Cypress</span>
-                <span class="skill-pill">Selenium</span>
-                <span class="skill-pill">TypeScript</span>
-                <span class="skill-pill">JavaScript</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3 data-en="Quality & Testing" data-pt-br="Qualidade e Testes">Quality & Testing</h3>
-              <div class="skills-grid">
-                <span class="skill-pill" data-en="Test Strategy" data-pt-br="Estratégia de Testes">Test Strategy</span>
-                <span class="skill-pill" data-en="API Testing" data-pt-br="Testes de API">API Testing</span>
-                <span class="skill-pill" data-en="Integration Testing" data-pt-br="Testes de Integração">Integration Testing</span>
-                <span class="skill-pill" data-en="Performance Testing" data-pt-br="Testes de Performance">Performance Testing</span>
-                <span class="skill-pill" data-en="Accessibility Testing" data-pt-br="Testes de Acessibilidade">Accessibility Testing</span>
-              </div>
-            </div>
-
-            <div class="skill-category">
-              <h3 data-en="Tools & Platforms" data-pt-br="Ferramentas e Plataformas">Tools & Platforms</h3>
-              <div class="skills-grid">
-                <span class="skill-pill" data-en="GitHub / GitLab" data-pt-br="GitHub / GitLab">GitHub / GitLab</span>
-                <span class="skill-pill" data-en="CI/CD (GitHub Actions)" data-pt-br="CI/CD (GitHub Actions)">CI/CD (GitHub Actions)</span>
-                <span class="skill-pill">Jira</span>
-                <span class="skill-pill">Postman</span>
-                <span class="skill-pill">Docker</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="content-section contact-section" id="contact">
-          <div class="section-heading">
-            <p class="section-kicker" data-en="// Let's Connect" data-pt-br="// Vamos Conectar">// Let's Connect</p>
-            <h2 data-en="I'd love to hear about your quality challenges." data-pt-br="Gostaria de ouvir sobre seus desafios de qualidade.">I'd love to hear about your quality challenges.</h2>
-          </div>
-
-          <div class="contact-panel">
-            <p data-en="Whether you're looking to improve testing practices, build quality teams, or need expertise in test automation and strategy—let's talk." data-pt-br="Se você está procurando melhorar práticas de testes, construir equipes de qualidade ou precisa de expertise em automação de testes e estratégia—vamos conversar.">
-              Whether you're looking to improve testing practices, build quality teams, or need expertise in test automation and strategy—let's talk.
-            </p>
-
-            <div class="contact-actions">
-              <a class="button primary" href="mailto:andre.kreutzer@outlook.com" data-en="Send me an email" data-pt-br="Me envie um e-mail">Send me an email</a>
-              <a class="button secondary" href="https://linkedin.com/in/andrelkj" target="_blank" rel="noopener noreferrer" data-en="Connect on LinkedIn" data-pt-br="Conectar no LinkedIn">Connect on LinkedIn</a>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="site-footer">
-        <p data-en="© 2026 André Kreutzer" data-pt-br="© 2026 André Kreutzer">© 2026 André Kreutzer</p>
-        <p data-en="Built for clarity and quality." data-pt-br="Construído com clareza e qualidade.">Built for clarity and quality.</p>
-      </footer>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
