@@ -204,7 +204,7 @@
     });
 
     const navLinks=[...document.querySelectorAll('nav a')],sections=[...document.querySelectorAll('main section[id]')];
-    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-50%'});
+    const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'0px'});
     sections.forEach(s=>observer.observe(s));
 
     document.querySelectorAll('.role-head').forEach(head=>head.addEventListener('click',()=>head.closest('.role').classList.toggle('open')));
