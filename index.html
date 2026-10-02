@@ -264,6 +264,7 @@
             <dt class="mono" data-i18n="lbl.result">result</dt>
             <dd data-i18n="work.w3.r">Full suites generated <strong>in under 1 hour</strong>, test planning down to <strong>~2 hours</strong>, and less review churn.</dd>
           </dl>
+          <a class="case-link mono" href="#built-with-ai" data-i18n="work.w3.link">→ see it applied to this site</a>
         </article>
 
         <article class="card case">
@@ -291,6 +292,68 @@
           <li><a href="https://github.com/andrelkj/GravidadeZero" target="_blank" rel="noopener"><span class="mono">GravidadeZero</span><span class="dim">Robot Framework · REST · CI</span></a></li>
         </ul>
       </div>
+    </section>
+
+    <!-- BUILT WITH AI -->
+    <section class="section container" id="built-with-ai" aria-labelledby="ai-title">
+      <p class="eyebrow mono">// git log --oneline redesign</p>
+      <h2 id="ai-title" data-i18n="ai.title">How this site was built</h2>
+      <p class="lede ai-lede" data-i18n="ai.lede">This page is itself an example of the AI-assisted workflow I use at work. I built it in one session with <strong>Claude Code</strong>: I set direction, made the content and design calls and reviewed every change. The AI researched, implemented and tested in a real browser.</p>
+
+      <div class="ai-grid">
+        <ol class="ai-steps">
+          <li>
+            <p class="mono accent">01 · audit</p>
+            <h3 data-i18n="ai.s1.t">Check the facts first</h3>
+            <p data-i18n="ai.s1.d">Compared the old site with my resume and LinkedIn. It overstated experience, missed a current employer and showed numbers I couldn't back up. New rule: every claim must trace back to the resume, and no number gets invented.</p>
+          </li>
+          <li>
+            <p class="mono accent">02 · plan</p>
+            <h3 data-i18n="ai.s2.t">Choose for the reader</h3>
+            <p data-i18n="ai.s2.d">Reviewed a terminal-style reference site and kept its look, but chose a normal scrolling layout over an interactive shell, because recruiters skim in under a minute. Removed unused Jekyll and CI files and added a plain static deploy.</p>
+          </li>
+          <li>
+            <p class="mono accent">03 · iterate</p>
+            <h3 data-i18n="ai.s3.t">Fix what review finds</h3>
+            <p data-i18n="ai.s3.d">My review drove each round: internal project jargon became plain-language results, and a mobile menu that stayed open over the content became an always-visible tab bar with 44px tap targets and a header that hides while you read.</p>
+          </li>
+          <li>
+            <p class="mono accent">04 · verify</p>
+            <h3 data-i18n="ai.s4.t">Test before shipping</h3>
+            <p data-i18n="ai.s4.d">Every change was checked in a real browser at phone, tablet and desktop sizes before it was committed, in small commits that can each be reviewed on their own. The checks are in the QA report.</p>
+          </li>
+        </ol>
+
+        <figure class="terminal ai-report" aria-labelledby="ai-report-title">
+          <div class="term-bar" aria-hidden="true">
+            <span></span><span></span><span></span>
+            <p class="mono">qa-report: andrelkj.github.io</p>
+          </div>
+          <div class="term-body mono">
+            <p id="ai-report-title" class="dim" data-i18n="ai.r.title">Checks run on this site</p>
+            <p><span class="pass">✓</span> <span data-i18n="ai.r1">axe-core accessibility scan (WCAG 2.2 AA + best practices): 0 violations, dark and light themes</span></p>
+            <p><span class="pass">✓</span> <span data-i18n="ai.r2">Layout at 375 / 768 / 1280 px: no horizontal overflow</span></p>
+            <p><span class="pass">✓</span> <span data-i18n="ai.r3">Tap targets measured: every mobile nav tab ≥ 44px tall</span></p>
+            <p><span class="pass">✓</span> <span data-i18n="ai.r4">EN / PT-BR: every string translated, nav fits in both languages</span></p>
+            <p><span class="pass">✓</span> <span data-i18n="ai.r5">Navigation: active section correct down to the last one; header hide/show, keyboard focus and reduced motion</span></p>
+            <p><span class="pass">✓</span> <span data-i18n="ai.r6">Links and assets resolve (resume PDF, icon); no console errors</span></p>
+            <p><span class="pass">✓</span> <span data-i18n="ai.r7">Content: claims checked against the resume; scan for internal jargon</span></p>
+            <p class="summary"><span class="pass" data-i18n="ai.r.summary">7 passed</span></p>
+            <ul class="dim ai-commits">
+              <li><span class="hash">520c281</span> <span data-i18n="ai.c1">static Pages deploy, Jekyll removed</span></li>
+              <li><span class="hash">7f5edd5</span> <span data-i18n="ai.c2">resume PDF + favicon</span></li>
+              <li><span class="hash">7d25b52</span> <span data-i18n="ai.c3">page redesign</span></li>
+              <li><span class="hash">943d930</span> <span data-i18n="ai.c4">PT-BR translations</span></li>
+              <li><span class="hash">7dce87d</span> <span data-i18n="ai.c5">README</span></li>
+              <li><span class="hash">5554552</span> <span data-i18n="ai.c6">always-visible mobile nav</span></li>
+              <li><span class="hash">9479224</span> <span data-i18n="ai.c7">44px tabs + hide-on-scroll header</span></li>
+              <li><span class="hash">HEAD</span> <span data-i18n="ai.c8">this build log</span></li>
+            </ul>
+          </div>
+        </figure>
+      </div>
+
+      <p class="ai-roles small" data-i18n="ai.roles"><strong>Me:</strong> direction, content, UX decisions, review and approval. <strong>AI:</strong> research, code, browser testing, commits. <strong>Tools:</strong> Claude Code, axe-core, git, GitHub Pages.</p>
     </section>
 
     <!-- STACK -->
@@ -372,7 +435,7 @@
   </main>
 
   <footer class="footer container mono">
-    <p><span class="accent">$</span> exit 0</p>
+    <p><span class="accent">$</span> exit 0 <span class="dim">·</span> <a href="#built-with-ai" data-i18n="footer.built">built with AI, tested by a QA</a></p>
     <p class="dim">© <span id="year">2026</span> André Kreutzer</p>
   </footer>
 

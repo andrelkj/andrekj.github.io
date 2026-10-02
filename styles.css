@@ -451,6 +451,24 @@ strong { color: var(--text); font-weight: 600; }
 .training-list .dim { font-size: 0.8rem; }
 @media (max-width: 720px) { .training-list { grid-template-columns: 1fr; } }
 
+/* Built with AI */
+.case-link { margin-top: auto; font-size: 0.82rem; color: var(--accent); text-decoration: none; }
+.case-link:hover { text-decoration: underline; }
+.ai-lede { margin: -16px 0 32px; max-width: 46em; }
+.ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+.ai-steps { display: grid; gap: 22px; counter-reset: none; }
+.ai-steps li { padding-left: 16px; border-left: 2px solid var(--border); }
+.ai-steps .mono { font-size: 0.78rem; }
+.ai-steps h3 { font-size: 1.05rem; margin: 4px 0 6px; }
+.ai-steps li > p:last-child { color: var(--text-muted); font-size: 0.95rem; }
+.ai-report .term-body { line-height: 1.7; }
+.ai-report .term-body p + p { margin-top: 6px; }
+.ai-report .ai-commits { padding-top: 12px; margin-top: 14px; border-top: 1px dashed var(--border); line-height: 1.7; }
+.ai-roles { margin-top: 28px; padding-top: 18px; border-top: 1px dashed var(--border); }
+.footer a { color: var(--text-muted); }
+.footer a:hover { color: var(--accent); }
+@media (max-width: 920px) { .ai-grid { grid-template-columns: 1fr; } }
+
 /* Stack */
 .stack-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .stack-group { padding: 20px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
