@@ -162,6 +162,7 @@
     });
     document.querySelector(".lang-switch").setAttribute("aria-label", UI[lang].lang);
     syncThemeLabel();
+    syncOverflow();
     store("lang", lang);
   }
 
@@ -224,13 +225,41 @@
     markActive(current);
   }
 
+  // Fade the row's edge only when the tabs don't fit (very narrow phones).
+  function syncOverflow() {
+    navLinks.classList.toggle("is-overflowing", navLinks.scrollWidth > navLinks.clientWidth + 1);
+  }
+
+  /* ---------- Hide header on scroll down (mobile & tablet) ---------- */
+  const topbar = document.querySelector(".topbar");
+  const compact = window.matchMedia("(max-width: 820px)");
+  const calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let lastY = window.scrollY;
+
+  function updateHeader() {
+    const y = window.scrollY;
+    if (!compact.matches || calm.matches || y < 120 || topbar.querySelector(":focus-visible")) {
+      topbar.classList.remove("is-hidden");
+      lastY = y;
+      return;
+    }
+    // Ignore small jitters; act once the scroll has moved a few pixels.
+    if (Math.abs(y - lastY) < 8) return;
+    topbar.classList.toggle("is-hidden", y > lastY);
+    lastY = y;
+  }
+
+  topbar.addEventListener("focusin", () => {
+    if (topbar.querySelector(":focus-visible")) topbar.classList.remove("is-hidden");
+  });
+
   let ticking = false;
   window.addEventListener("scroll", () => {
     if (ticking) return;
     ticking = true;
-    requestAnimationFrame(() => { updateActive(); ticking = false; });
+    requestAnimationFrame(() => { updateActive(); updateHeader(); ticking = false; });
   }, { passive: true });
-  window.addEventListener("resize", updateActive);
+  window.addEventListener("resize", () => { updateActive(); updateHeader(); syncOverflow(); });
   updateActive();
 
   /* ---------- Init ---------- */
