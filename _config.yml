@@ -1,13 +1,13 @@
-title: André Kreutzer | Sr. QA Engineer & SET
-description: Portfolio showcasing test automation expertise in Playwright, C#, mobile testing, and API automation
+title: André Kreutzer | Quality Engineer
+description: Portfolio showcasing QA engineering, test automation, and quality strategy
 author: André Kreutzer
 email: andre.kreutzer@outlook.com
 baseurl: ""
 url: "https://andrelkj.github.io"
-theme: jekyll-theme-minimal
+lang: en
 
-# Jekyll settings
+# Build settings
 markdown: kramdown
-plugins:
-  - jekyll-seo-tag
-  - jekyll-feed
+exclude:
+  - node_modules
+  - README.md
