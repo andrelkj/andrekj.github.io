@@ -66,12 +66,13 @@
     .skill.active::before{opacity:1}
     .skill h4{margin:0 0 8px;font-size:13px;font-weight:600;text-transform:uppercase;color:var(--green);position:relative;z-index:1}
     .skill p{margin:0;font-size:13px;color:var(--muted);position:relative;z-index:1}
-    .filter{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:8px 16px;cursor:pointer;color:var(--ink);font-weight:500;font-size:13px;transition:all .2s;min-height:40px;position:relative;overflow:hidden}
+    .filter{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:8px 16px;cursor:pointer;color:var(--ink);font-weight:500;font-size:13px;transition:all .2s;min-height:40px;position:relative;overflow:hidden;z-index:1}
     .filter::before{content:'';position:absolute;inset:0;background:var(--green);opacity:0;transform:scaleX(0);transform-origin:left;transition:transform .3s,opacity .3s;z-index:0}
     .filter:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
     .filter:focus-visible{outline:2px solid var(--green);outline-offset:2px}
-    .filter.active{background:var(--green);color:#fff;border-color:var(--green);position:relative}
-    .filter.active::before{opacity:1;transform:scaleX(1)}
+    .filter.active{background:var(--green);color:#fff;border-color:var(--green);position:relative;z-index:1}
+    .filter.active::before{display:none}
+    .filter.active:hover{color:#fff;background:var(--green)}
     .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;margin-top:30px}
     .fact{padding:24px;background:var(--line);border-radius:8px;transition:all .2s;position:relative;overflow:hidden}
     .fact::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(7,139,104,0.2),transparent);transition:left .6s}
@@ -115,7 +116,6 @@
       .contact h2 span{display:block}
       .section{margin-top:50vh}
     }
-    /* Smooth cursor follow effect */
     @supports (cursor: url('data:,')) {
       a, button {
         cursor: pointer;
@@ -162,17 +162,15 @@
     </main>
   </div>
   <script>
-    // Theme toggle - fixed top right
     const themeToggles = document.querySelectorAll('.theme-toggles .theme-toggle');
     const htmlElement = document.documentElement;
     const savedTheme = localStorage.getItem('theme') || 'dark';
-    
     htmlElement.setAttribute('data-theme', savedTheme);
     themeToggles.forEach(btn => {
       if(btn.dataset.theme === savedTheme) btn.classList.add('active');
       else btn.classList.remove('active');
     });
-    
+
     themeToggles.forEach(btn => {
       btn.addEventListener('click', () => {
         const theme = btn.dataset.theme;
@@ -181,24 +179,20 @@
         themeToggles.forEach(b => b.classList.toggle('active', b.dataset.theme === theme));
       });
     });
-    
-    // Language toggle - sidebar
+
     const langToggles = document.querySelectorAll('.lang-toggle');
     const savedLang = localStorage.getItem('lang') || 'en';
     htmlElement.setAttribute('lang', savedLang === 'pt-br' ? 'pt-BR' : 'en');
-    
     const updateLanguage = (lang) => {
       document.querySelectorAll(`[data-${lang}]`).forEach(el => {
         el.textContent = el.getAttribute(`data-${lang}`);
       });
     };
-    
     updateLanguage(savedLang);
     langToggles.forEach(btn => {
       if(btn.dataset.lang === savedLang) btn.classList.add('active');
       else btn.classList.remove('active');
     });
-    
     langToggles.forEach(btn => {
       btn.addEventListener('click', () => {
         const lang = btn.dataset.lang;
@@ -208,20 +202,16 @@
         langToggles.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
       });
     });
-    
-    // Navigation active state
+
     const navLinks=[...document.querySelectorAll('nav a')],sections=[...document.querySelectorAll('main section[id]')];
     const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-50%'});
     sections.forEach(s=>observer.observe(s));
-    
-    // Expandable roles
+
     document.querySelectorAll('.role-head').forEach(head=>head.addEventListener('click',()=>head.closest('.role').classList.toggle('open')));
-    
-    // Skill filters
+
     const filters=document.querySelectorAll('.filter'),skills=document.querySelectorAll('.skill');
     filters.forEach(button=>button.addEventListener('click',()=>{filters.forEach(b=>b.classList.remove('active'));button.classList.add('active');const filter=button.dataset.filter;skills.forEach(s=>s.classList.toggle('active',s.dataset.filter.includes(filter)))}));
 
-    // Mouse follow animation on interactive elements
     document.querySelectorAll('a, button').forEach(el => {
       el.addEventListener('mousemove', (e) => {
         const rect = el.getBoundingClientRect();
