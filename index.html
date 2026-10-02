@@ -67,10 +67,10 @@
     .skill h4{margin:0 0 8px;font-size:13px;font-weight:600;text-transform:uppercase;color:var(--green);position:relative;z-index:1}
     .skill p{margin:0;font-size:13px;color:var(--muted);position:relative;z-index:1}
     .filter{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:8px 16px;cursor:pointer;color:var(--ink);font-weight:500;font-size:13px;transition:all .2s;min-height:40px;position:relative;overflow:hidden}
-    .filter::before{content:'';position:absolute;inset:0;background:var(--green);opacity:0;transform:scaleX(0);transform-origin:left;transition:transform .3s,opacity .3s}
+    .filter::before{content:'';position:absolute;inset:0;background:var(--green);opacity:0;transform:scaleX(0);transform-origin:left;transition:transform .3s,opacity .3s;z-index:0}
     .filter:hover{border-color:var(--green);color:var(--green);transform:translateY(-2px)}
     .filter:focus-visible{outline:2px solid var(--green);outline-offset:2px}
-    .filter.active{background:var(--green);color:#fff;border-color:var(--green)}
+    .filter.active{background:var(--green);color:#fff;border-color:var(--green);position:relative}
     .filter.active::before{opacity:1;transform:scaleX(1)}
     .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px;margin-top:30px}
     .fact{padding:24px;background:var(--line);border-radius:8px;transition:all .2s;position:relative;overflow:hidden}
@@ -79,12 +79,12 @@
     .fact strong{display:block;font-size:24px;color:var(--green);margin-bottom:8px;position:relative;z-index:1}
     .fact p{margin:0;color:var(--muted);font-size:13px;position:relative;z-index:1}
     .actions{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap}
-    .button{padding:14px 28px;background:var(--green);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;min-height:44px;position:relative;overflow:hidden}
-    .button::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.3),transparent);opacity:0;transition:opacity .3s}
+    .button{padding:14px 28px;background:var(--green);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;border:none;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;min-height:44px;position:relative;overflow:hidden;z-index:1}
+    .button::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.3),transparent);opacity:0;transition:opacity .3s;z-index:-1}
     .button:hover{background:#078b68;transform:translateY(-2px);box-shadow:0 8px 20px rgba(7,139,104,.2)}
     .button:hover::before{opacity:1}
     .button:active{transform:translateY(0);box-shadow:0 4px 12px rgba(7,139,104,.15)}
-    .button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+    .button:focus-visible{outline:2px solid #fff;outline-offset:2px}
     .contact{background:linear-gradient(135deg,var(--green-soft) 0%,rgba(7,139,104,.05) 100%)}
     h1{font-size:clamp(48px,7vw,78px);line-height:1.1;margin:0 0 20px}
     .footer{text-align:center;padding:40px;color:var(--muted);font-size:13px}
