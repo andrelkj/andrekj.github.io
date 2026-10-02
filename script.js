@@ -4,7 +4,6 @@ const themeIcon = document.querySelector('.theme-icon');
 const langButtons = document.querySelectorAll('.lang-btn');
 const navLinks = document.querySelectorAll('.primary-nav .nav-link');
 
-// Theme management
 const getPreferredTheme = () => {
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme) return savedTheme;
@@ -18,13 +17,13 @@ const applyTheme = (theme) => {
   localStorage.setItem('theme', theme);
 };
 
-// Language management
 const applyLanguage = (lang) => {
-  const nodes = document.querySelectorAll('[data-en][data-pt-br]');
-  nodes.forEach((node) => {
-    const content = lang === 'pt-br' ? node.getAttribute('data-pt-br') : node.getAttribute('data-en');
-    if (content) {
-      node.textContent = content;
+  const translationNodes = document.querySelectorAll('[data-en][data-pt-br]');
+
+  translationNodes.forEach((node) => {
+    const translation = lang === 'pt-br' ? node.getAttribute('data-pt-br') : node.getAttribute('data-en');
+    if (translation) {
+      node.textContent = translation;
     }
   });
 
@@ -36,47 +35,39 @@ const applyLanguage = (lang) => {
   localStorage.setItem('lang', lang);
 };
 
-// Navigation active state - improved to handle all sections
 const setActiveNav = () => {
   const sections = [...document.querySelectorAll('main section[id]')];
-  const scrollY = window.scrollY;
   const viewportHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
-  
-  // Check if scrolled to bottom
-  const isAtBottom = scrollY + viewportHeight >= documentHeight - 50;
-  
+  const isAtBottom = window.scrollY + viewportHeight >= documentHeight - 40;
+
   let activeId = 'top';
-  
+
   for (let i = sections.length - 1; i >= 0; i--) {
     const section = sections[i];
-    if (scrollY >= section.offsetTop - 200) {
+    const threshold = section.offsetTop - 180;
+    if (window.scrollY >= threshold) {
       activeId = section.id;
       break;
     }
   }
-  
-  // If at bottom, highlight the last section
+
   if (isAtBottom && sections.length > 0) {
     activeId = sections[sections.length - 1].id;
   }
 
   navLinks.forEach((link) => {
     const href = link.getAttribute('href');
-    const isActive = href === `#${activeId}`;
-    link.classList.toggle('active', isActive);
+    link.classList.toggle('active', href === `#${activeId}`);
   });
 };
 
-// Initialize theme
 const initialTheme = getPreferredTheme();
 applyTheme(initialTheme);
 
-// Initialize language
 const savedLang = localStorage.getItem('lang') || 'en';
 applyLanguage(savedLang);
 
-// Event listeners
 themeButton.addEventListener('click', () => {
   const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
   applyTheme(nextTheme);
@@ -89,18 +80,17 @@ langButtons.forEach((button) => {
 });
 
 window.addEventListener('scroll', setActiveNav, { passive: true });
+window.addEventListener('load', setActiveNav);
 setActiveNav();
 
-// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', (e) => {
+  link.addEventListener('click', (event) => {
     const href = link.getAttribute('href');
-    if (href !== '#' && document.querySelector(href)) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      target.scrollIntoView({ behavior: 'smooth' });
-      // Update active nav after scroll
-      setTimeout(setActiveNav, 100);
-    }
+    if (!href || href === '#' || !document.querySelector(href)) return;
+
+    event.preventDefault();
+    const target = document.querySelector(href);
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(setActiveNav, 150);
   });
 });
